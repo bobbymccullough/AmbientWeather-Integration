@@ -6,7 +6,7 @@ Requires:
 
 Node (at least that's how I did it, modified in Atom);
 
-Ambient Weather's API wrapper (owise1 / ambient-weather-api);
+Ambient Weather's API wrapper (https://github.com/owise1/ambient-weather-api);
 
 Ambient Weather API and Application Key (available from https://www.ambientweather.com/api.html);
 
