@@ -22,7 +22,7 @@ TrueSight Intelligence API Token (available from TrueSight Intelligence/Account/
 Its very possible that some other libraries were hit other than those listed (i'm not a programmer).
 Would love someone to test this and let me know if more is required;
 
-Place PWS2TSIFeed.js in any/a folder under "node_modules" after installing the wrapper
+Place PWS2TSIFeed.js in any/a folder immediately under "node_modules" after installing the wrapper
   
 You may modify the metrics collected as described in the comments of the JS file.
 
