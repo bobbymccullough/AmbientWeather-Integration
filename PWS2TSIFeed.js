@@ -8,15 +8,23 @@ function getName (device) {
 }
 
 //establishes the Ambient Weather API Key and Application Key
-const apiKey = process.env.AMBIENT_WEATHER_API_KEY || '<AMBIENT WEATHER API KEY GOES HERE>'
+const apiKey = process.env.AMBIENT_WEATHER_API_KEY || '<ENTER AMBIENT WEATHER API KEY HERE>'
 const api1 = new AmbientWeatherApi({
   apiKey,
-  applicationKey: process.env.AMBIENT_WEATHER_APPLICATION_KEY || '<AMBIENT WEATHER APPLICATION KEY GOES HERE>'
+  applicationKey: process.env.AMBIENT_WEATHER_APPLICATION_KEY || '<ENTER AMBIENT WEATHER APPLICATION KEY HERE>'
 })
 
 //establishes a connection to Ambient weather and reports back that its done so
 api1.connect()
-api1.on('connect', () => console.log('Connected to Ambient Weather Realtime API!'))
+api1.on('connect', () => {
+  console.log('Connected to Ambient Weather Realtime API!')
+  //Establishes the Ambient Weather subscription...
+  //had to move to there and create "container"...
+  //AW has system drop out every afternoon and my...
+  //system would reconnect but not re-subscribe...
+  //this should fix that.
+  api1.subscribe(apiKey)
+})
 
 //shows how many devices are subscribed and their names
 api1.on('subscribed', data => {
@@ -56,11 +64,11 @@ api1.on('data', data => {
       'Content-Type': 'application/json'
   }
 
-//Establishes the data array that will be sent to TrueSight Intelligence...
-//This section can be modified to include only those metrics you wish...
-//This list was created for the Ambient Weather WS-2902 system, your system...
-//may have other/different fields than those listed.  If you use a different system...
-//it would require modifying the "console.log" section above displaying the information
+  //Establishes the data array that will be sent to TrueSight Intelligence...
+  //This section can be modified to include only those metrics you wish...
+  //This list was created for the Ambient Weather WS-2902 system, your system...
+  //may have other/different fields than those listed.  If you use a different system...
+  //it would require modifying the "console.log" section above displaying the information
   const vdataArray = [
        [
           "api.ambientweather.net",
@@ -170,7 +178,7 @@ api1.on('data', data => {
     json: true,
     auth: {
       'user': '<TRUESIGHT INTELLIGENCE USER LOGIN GOES HERE>',
-      'pass': '<TRUESIGHT INTELLIGENCE APP TOKEN GOES HERE>'
+      'pass': '<TRUESIGHT INTELLIGENCE API TOKEN GOES HERE>'
       }
   }
 
@@ -184,6 +192,3 @@ function callback(error, response, body) {
 //POST primary action that adds a measurement(s) to TrueSight
 request(options, callback)
 });
-
-//Establishes the Ambient Weather subscription
-api1.subscribe(apiKey)
