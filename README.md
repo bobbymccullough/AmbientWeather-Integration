@@ -7,6 +7,8 @@ Can be used for other Ambient Weather stations/systems but could require modifyi
 Establishes a connection to Ambient Weather and subscribes.  
 When data is received, it is output to the console as well as POSTed to BMC's TrueSight Intelligence
 
+Fixed a problem where Ambient does some system maintenance every day and the system restarts/resets.  This app would loose connection but would always reconnect.  The issue is it wouldn't "resubscribe."  I moved the subscribe section up to be a part of the Connect section (which re-ran every time properly) and so far it seems to have worked.
+
 Requires:
 
 Node (at least that's how I did it, modified in Atom);
