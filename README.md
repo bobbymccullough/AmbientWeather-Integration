@@ -1,4 +1,4 @@
-# AmbientWeather-TrueSight
+ # AmbientWeather-TrueSight
 
 Integration between Ambient Weather's API for a WS-2902 station and TrueSight Intelligence
 
@@ -11,8 +11,8 @@ Fixed a problem where Ambient does some system maintenance every day and the sys
 
 Contents:
 License.md - ok, whatever
-PWS2TSIFeed.bat - batch to launch it the way I do from my laptop
-PWS2TSIFeed.js - javascript integration app
+PWS2TSIFeed.bat - batch to launch it the way I do from my laptop 
+PWS2TSIFeed.js - javascript integration app 
 README.md - this file
 
 Requires:
