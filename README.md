@@ -22,7 +22,7 @@ Node (at least that's how I did it, modified in Atom)<br/>
 Ambient Weather's API wrapper - https://github.com/owise1/ambient-weather-api<br/>
 Ambient Weather API and Application Key - current information to obtain is available from:  https://www.ambientweather.com/api.html)<br/>
 TrueSight Intelligence User Login<br/>
-TrueSight Intelligence API Token - available from TrueSight Intelligence/Account/Product Security
+TrueSight Intelligence API Token - available from TrueSight Intelligence/Profile/Account/Product/Product Security
   
 Place PWS2TSIFeed.js in any/a folder immediately under "node_modules" after installing the wrapper
   
