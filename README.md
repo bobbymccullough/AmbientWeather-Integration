@@ -1,10 +1,10 @@
- # AmbientWeather-TrueSight
+# AmbientWeather-TrueSight
 
-Integration between Ambient Weather's API for a WS-2902 station and TrueSight Intelligence
+Integration between Ambient Weather's API for a WS-2902 station and TrueSight Intelligence analytic tool.
 
-Can be used for other Ambient Weather stations/systems but could require modifying the console.log output of the array as well as the array.
+Can be used for other Ambient Weather stations/systems but could require modifying the console.log output of the array as well as the POST of the array.
 
-Establishes a connection to Ambient Weather and subscribes.  
+Establishes a connection to Ambient Weather and subscribes.<br/>
 When data is received, it is output to the console as well as POSTed to BMC's TrueSight Intelligence
 
 Fixed a problem where Ambient does some system maintenance every day and the system restarts/resets.  This app would loose connection but would always reconnect.  The issue is it wouldn't "resubscribe."  I moved the subscribe section up to be a part of the Connect section (which re-ran every time properly) and so far it seems to have worked.
@@ -18,14 +18,10 @@ README.md - this file
 
 Requires:
 
-Node (at least that's how I did it, modified in Atom);
-
-Ambient Weather's API wrapper (https://github.com/owise1/ambient-weather-api);
-
-Ambient Weather API and Application Key (current information to obtain is available from https://www.ambientweather.com/api.html);
-
-TrueSight Intelligence User Login;
-
+Node (at least that's how I did it, modified in Atom)<br/>
+Ambient Weather's API wrapper (https://github.com/owise1/ambient-weather-api)<br/>
+Ambient Weather API and Application Key (current information to obtain is available from https://www.ambientweather.com/api.html)<br/>
+TrueSight Intelligence User Login<br/>
 TrueSight Intelligence API Token (available from TrueSight Intelligence/Account/Product Security)
   
 Its very possible that some other libraries were hit other than those listed (i'm not a programmer).
