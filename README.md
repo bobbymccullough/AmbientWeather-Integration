@@ -1,4 +1,4 @@
-.# AmbientWeather-TrueSight
+# AmbientWeather-TrueSight
 
 Integration between Ambient Weather's API for a WS-2902 station and TrueSight Intelligence
 
