@@ -19,14 +19,11 @@ README.md - this file
 Requires:
 
 Node (at least that's how I did it, modified in Atom)<br/>
-Ambient Weather's API wrapper (https://github.com/owise1/ambient-weather-api)<br/>
-Ambient Weather API and Application Key (current information to obtain is available from https://www.ambientweather.com/api.html)<br/>
+Ambient Weather's API wrapper - https://github.com/owise1/ambient-weather-api<br/>
+Ambient Weather API and Application Key - current information to obtain is available from:  https://www.ambientweather.com/api.html)<br/>
 TrueSight Intelligence User Login<br/>
-TrueSight Intelligence API Token (available from TrueSight Intelligence/Account/Product Security)
+TrueSight Intelligence API Token - available from TrueSight Intelligence/Account/Product Security
   
-Its very possible that some other libraries were hit other than those listed (i'm not a programmer).
-Would love someone to test this and let me know if more is required;
-
 Place PWS2TSIFeed.js in any/a folder immediately under "node_modules" after installing the wrapper
   
 You may modify the metrics collected as described in the comments of the JS file.
@@ -35,3 +32,5 @@ usage:
 node PWS2TSIFEED
 
 be gentle, i'm not programmer!!!
+Its very possible that some other libraries were hit other than those listed.  
+Would love someone to test this and let me know if more is required;
