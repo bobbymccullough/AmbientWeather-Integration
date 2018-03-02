@@ -10,9 +10,10 @@ When data is received, it is output to the console as well as POSTed to BMC's Tr
 Fixed a problem where Ambient does some system maintenance every day and the system restarts/resets.  This app would loose connection but would always reconnect.  The issue is it wouldn't "resubscribe."  I moved the subscribe section up to be a part of the Connect section (which re-ran every time properly) and so far it seems to have worked.
 
 Contents:
-License.md - ok, whatever
-PWS2TSIFeed.bat - batch to launch it the way I do from my laptop 
-PWS2TSIFeed.js - javascript integration app 
+
+License.md - ok, whatever<br/>
+PWS2TSIFeed.bat - batch to launch it the way I do from my laptop <br/>
+PWS2TSIFeed.js - javascript integration app <br/>
 README.md - this file
 
 Requires:
