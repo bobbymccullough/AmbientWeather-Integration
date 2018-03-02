@@ -32,5 +32,5 @@ usage:
 node PWS2TSIFEED
 
 be gentle, i'm not programmer!!!
-Its very possible that some other libraries were hit other than those listed.  
+Its very possible that some libraries were hit other than those listed.  
 Would love someone to test this and let me know if more is required;
