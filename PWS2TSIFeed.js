@@ -8,19 +8,22 @@ function getName (device) {
 }
 
 //establishes the Ambient Weather API Key and Application Key
-const apiKey = process.env.AMBIENT_WEATHER_API_KEY || '<ENTER AMBIENT WEATHER API KEY HERE>'
+const apiKey = process.env.AMBIENT_WEATHER_API_KEY || '<AMBIENT WEATHER API KEY GOES HERE>'
 const api1 = new AmbientWeatherApi({
   apiKey,
-  applicationKey: process.env.AMBIENT_WEATHER_APPLICATION_KEY || '<ENTER AMBIENT WEATHER APPLICATION KEY HERE>'
+  applicationKey: process.env.AMBIENT_WEATHER_APPLICATION_KEY || 'AMBIENT WEATHER APPLICATION KEY GOES HERE>'
 })
 
 //establishes a connection to Ambient weather and reports back that its done so
 api1.connect()
 api1.on('connect', () => {
   console.log('Connected to Ambient Weather Realtime API!')
-  //Establishes the Ambient Weather subscription but had to move to here... 
-  //because has system drop out every afternoon and my system would reconnect...
-  //but not re-subscribe this should fix that.
+  //console.log(moment())
+  //Establishes the Ambient Weather subscription...
+  //had to move to there and create "container"...
+  //AW has system drop out every afternoon and my...
+  //system would reconnect but not re-subscribe...
+  //this should fix that.
   api1.subscribe(apiKey)
 })
 
@@ -35,22 +38,25 @@ api1.on('subscribed', data => {
 //whereby a connection to TrueSight is established so that the data array...
 //can be posted.
 api1.on('data', data => {
-  console.log("UTC DateTime   :  " + data.dateutc)
-  console.log("PWS            :  " + getName(data.device))
-  console.log("Temperature    :  " + data.tempf)
-  console.log("Feels Like     :  " + data.feelsLike)
-  console.log("Humidity       :  " + data.humidity)
-  console.log("Barometer      :  " + data.baromrelin)
-  console.log("Hourly Rain    :  " + data.hourlyrainin)
-  console.log("Daily Rain     :  " + data.dailyrainin)
-  console.log("Weekly Rain    :  " + data.weeklyrainin)
-  console.log("Monthly Rain   :  " + data.monthlyrainin)
-  console.log("Wind Direction :  " + data.winddir)
-  console.log("Wind Speed     :  " + data.windspeedmph)
-  console.log("Wind Gust      :  " + data.windgustmph)
-  console.log("Max Daily Gust :  " + data.maxdailygust)
-  console.log("UV Index       :  " + data.uv)
-  console.log("Solar Radiation:  " + data.solarradiation)
+  console.log("GMTime            :  " + data.date)
+  console.log("UTC DateTime      :  " + data.dateutc)
+  console.log("PWS               :  " + getName(data.device))
+  console.log("Temperature       :  " + data.tempf)
+  console.log("Feels Like        :  " + data.feelsLike)
+  console.log("Humidity          :  " + data.humidity)
+  console.log("Barometer         :  " + data.baromrelin)
+  console.log("Hourly Rain       :  " + data.hourlyrainin)
+  console.log("Daily Rain        :  " + data.dailyrainin)
+  console.log("Weekly Rain       :  " + data.weeklyrainin)
+  console.log("Monthly Rain      :  " + data.monthlyrainin)
+  console.log("Wind Direction    :  " + data.winddir)
+  console.log("Wind Speed        :  " + data.windspeedmph)
+  console.log("Wind Gust         :  " + data.windgustmph)
+  console.log("Max Daily Gust    :  " + data.maxdailygust)
+  console.log("UV Index          :  " + data.uv)
+  console.log("Solar Radiation   :  " + data.solarradiation)
+  console.log("Indoor Temperature:  " + data.tempinf)
+  console.log("Indoor Humidity   :  " + data.humidityin)
   //console.log(data.yearlyrainin) - not available
   //console.log(data.windgustdir) - not available
 
@@ -65,7 +71,7 @@ api1.on('data', data => {
   //Establishes the data array that will be sent to TrueSight Intelligence...
   //This section can be modified to include only those metrics you wish...
   //This list was created for the Ambient Weather WS-2902 system, your system...
-  //may have other or different fields than those listed.  If you use a different system...
+  //may have other/different fields than those listed.  If you use a different system...
   //it would require modifying the "console.log" section above displaying the information
   const vdataArray = [
        [
@@ -81,7 +87,8 @@ api1.on('data', data => {
           data.feelsLike,
           data.dateutc,
           {"app_id":getName(data.device)}
-       ],[
+       ],
+       [
           "api.ambientweather.net",
           "humidity",
           data.humidity,
@@ -164,6 +171,20 @@ api1.on('data', data => {
           data.solarradiation,
           data.dateutc,
           {"app_id":getName(data.device)}
+       ],
+       [
+          "api.ambientweather.net",
+          "tempinf",
+          data.tempinf,
+          data.dateutc,
+          {"app_id":getName(data.device)}
+       ],
+       [
+          "api.ambientweather.net",
+          "humidityin",
+          data.humidityin,
+          data.dateutc,
+          {"app_id":getName(data.device)}
        ]
     ]
 
@@ -175,7 +196,7 @@ api1.on('data', data => {
     body: vdataArray,
     json: true,
     auth: {
-      'user': '<TRUESIGHT INTELLIGENCE USER LOGIN GOES HERE>',
+      'user': '<TRUESIGHT INTELLIGENCE LOGIN GOES HERE>',
       'pass': '<TRUESIGHT INTELLIGENCE API TOKEN GOES HERE>'
       }
   }
