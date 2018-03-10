@@ -9,6 +9,8 @@ When data is received, it is output to the console as well as POSTed to BMC's Tr
 
 Fixed a problem where Ambient does some system maintenance every day and the system restarts/resets.  This app would loose connection but would always reconnect.  The issue is it wouldn't "resubscribe."  I moved the subscribe section up to be a part of the Connect section (which re-ran every time properly) and so far it seems to have worked.
 
+Moved the program to AWS in the free tier.  Everything is working so far...
+
 Contents:
 
 License.md - ok, whatever<br/>
@@ -32,5 +34,3 @@ usage:
 node PWS2TSIFEED
 
 be gentle, i'm not programmer!!!
-Its very possible that some libraries were hit other than those listed.  
-Would love someone to test this and let me know if more is required;
