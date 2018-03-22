@@ -8,10 +8,10 @@ function getName (device) {
 }
 
 //establishes the Ambient Weather API Key and Application Key
-const apiKey = process.env.AMBIENT_WEATHER_API_KEY || '<AMBIENT WEATHER API KEY GOES HERE>'
+const apiKey = process.env.AMBIENT_WEATHER_API_KEY || '<INSERT AMBIENT WEATHER API KEY HERE>'
 const api1 = new AmbientWeatherApi({
   apiKey,
-  applicationKey: process.env.AMBIENT_WEATHER_APPLICATION_KEY || 'AMBIENT WEATHER APPLICATION KEY GOES HERE>'
+  applicationKey: process.env.AMBIENT_WEATHER_APPLICATION_KEY || '<INSERT AMBIENT WEATHER APPLICATION KEY HERE>'
 })
 
 //establishes a connection to Ambient weather and reports back that its done so
@@ -43,6 +43,7 @@ api1.on('data', data => {
   console.log("PWS               :  " + getName(data.device))
   console.log("Temperature       :  " + data.tempf)
   console.log("Feels Like        :  " + data.feelsLike)
+  console.log("Dewpoint          :  " + data.dewPoint)
   console.log("Humidity          :  " + data.humidity)
   console.log("Barometer         :  " + data.baromrelin)
   console.log("Hourly Rain       :  " + data.hourlyrainin)
@@ -89,6 +90,13 @@ api1.on('data', data => {
           {"app_id":getName(data.device)}
        ],
        [
+          "api.ambientweather.net",
+          "dewpoint",
+          data.dewPoint,
+          data.dateutc,
+          {"app_id":getName(data.device)}
+       ],
+	   [
           "api.ambientweather.net",
           "humidity",
           data.humidity,
@@ -196,8 +204,8 @@ api1.on('data', data => {
     body: vdataArray,
     json: true,
     auth: {
-      'user': '<TRUESIGHT INTELLIGENCE LOGIN GOES HERE>',
-      'pass': '<TRUESIGHT INTELLIGENCE API TOKEN GOES HERE>'
+      'user': '<INSERT TRUESIGHT INTELLIGENCE LOGIN HERE>',
+      'pass': '<INSERT TRUESIGHT INTELLIGENCE API TOKEN HERE>'
       }
   }
 
