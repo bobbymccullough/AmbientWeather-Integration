@@ -1,4 +1,4 @@
-# AmbientWeather-TrueSight Integration
+# AmbientWeather-Integration
 
 Integration between Ambient Weather's API for a WS-2902 station and BMC's TrueSight Intelligence analytic tool.
 
